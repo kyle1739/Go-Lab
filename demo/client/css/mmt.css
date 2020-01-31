@@ -1,0 +1,213 @@
+:host {
+	position: relative;
+	width: 500px;
+	height: 800px;
+}
+
+[data-mmt="host"] {
+	position: relative;
+	width: 500px;
+	height: 800px;
+}
+
+#mmt {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	font-family: "Microsoft JhengHei", sans-serif;
+}
+
+#mmt .textContent {
+	display: inline-block;
+	margin: 0 20px;
+	vertical-align: middle;
+}
+
+#mmtChatPanel {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+#mmtRoomListPanel {
+	position: absolute;
+	right: 100%;
+	top: 0;
+	margin-right: 5px;
+	width: 250px;
+	height: 100%;
+}
+
+#mmt .panel {
+	display: flex;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	box-shadow: 0 0 4px 1px silver;
+	flex-direction: column;
+}
+
+#mmt .panelHead {
+	position: relative;
+	height: 60px;
+	background-color: #E69;
+	color: white;
+	font-weight: bold;
+}
+
+#mmt .panelHead::before {
+	display: inline-block;
+	content: "";
+	width: 0;
+	height: 100%;
+	vertical-align: middle;
+}
+
+#mmt .panelBody {
+	position: relative;
+	flex: 1;
+	overflow: auto;
+}
+
+#mmt .panelFoot {
+	position: relative;
+	height: 150px;
+}
+
+#mmt .panelFoot::before {
+	display: block;
+	content: "";
+	margin: 10px;
+	height: 1px;
+	background-color: silver;
+}
+
+#mmtMessageOutput {
+	padding: 6px 0;
+}
+
+#mmt .systemMessage {
+	margin: 5px;
+	text-align: center;
+	color: #C90;
+}
+
+#mmt .userMessageBox {
+	display: flex;
+	padding: 2px 10px;
+}
+
+#mmt .userInfo {
+	width: 90px;
+	text-align: center;
+}
+
+#mmt .userIcon {
+	width: 60px;
+	height: auto;
+}
+
+#mmt .myMessage {
+	position: relative;
+	flex: 1;
+	text-align: right;
+}
+
+#mmt .userMessage {
+	position: relative;
+	flex: 1;
+	text-align: left;
+}
+
+#mmt .bubble {
+	display: inline-block;
+	position: relative;
+	margin: 5px;
+	border-radius: 10px;
+	padding: 10px;
+	max-width: 80%;
+	min-height: 1em;
+	text-align: left;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+#mmt .myMessage>.bubble {
+	right: 0;
+	background-color: #CE9;
+}
+
+#mmt .userMessage>.bubble {
+	left: 0;
+	background-color: #DDD;
+}
+
+#mmt .bubble::after {
+	content: "";
+	position: absolute;
+	top: 12px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+}
+
+#mmt .myMessage>.bubble::after {
+	left: 100%;
+	border-width: 5px 0 5px 7px;
+	border-color: transparent transparent transparent #CE9;
+}
+
+#mmt .userMessage>.bubble::after {
+	right: 100%;
+	border-width: 5px 7px 5px 0;
+	border-color: transparent #DDD transparent transparent;
+}
+
+#mmt .nickName {
+	font-size: 10pt;
+}
+
+#mmtMessageInput {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+	height: 90px;
+	resize: none;
+	font-family: inherit;
+}
+
+#mmtRoomList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#mmtRoomList>li {
+	position: relative;
+	border-bottom: solid 1px silver;
+	height: 50px;
+	cursor: pointer;
+}
+
+#mmtRoomList>li::before {
+	display: inline-block;
+	content: "";
+	height: 100%;
+	vertical-align: middle;
+}
+
+#mmtAddRoom {
+	text-align: center;
+}
+
+#mmtShowRoomListPanelBtn {
+	display: inline-block;
+	margin: 0 0 0 10px;
+	width: auto;
+	height: 100%;
+	cursor: pointer;
+	vertical-align: middle;
+}

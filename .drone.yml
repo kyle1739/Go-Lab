@@ -1,0 +1,52 @@
+kind: pipeline
+name: dev-mml
+
+steps:
+#  - name: linter
+#    image: golang:latest
+#    commands:
+#      - go get -u github.com/golangci/golangci-lint/cmd/golangci-lint
+
+  - name: docker-build
+    image: plugins/docker
+    settings:
+      registry: 192.168.20.172
+      repo: 192.168.20.172/kyle/mml
+      dockerfile: Dockerfile
+      username: admin
+      password:
+        from_secret: docker_password
+      insecure: true
+      tags:
+        - ${DRONE_TAG##v}
+        - ${DRONE_COMMIT_SHA:0:8}
+        - latest
+    trigger:
+      event: 
+      - tag
+      branch: 
+      - master
+
+  - name: helm-deploy
+    image: pelotech/drone-helm3
+    settings:
+      kube_api_server: https://192.168.20.173:6443
+      kube_token:
+        from_secret: dev_kubernetes_token
+      add_repos: chartmuseum=http://192.168.20.173:31111/
+      mode: upgrade
+      chart: chartmuseum/mml
+      release: mml
+      kube_service_account: admin-user
+      wait: true
+      values: image.tag=${DRONE_TAG}     
+#      values_files: ["./helm/mml/"]
+      debug: true
+      namespace: mml-dev
+      skip_tls_verify: true 
+    trigger:
+      event:
+      - tag
+      branch:
+      - master
+
